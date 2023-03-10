@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Android Lab</string>
+
+    <string name="press_me">Press me!</string>
+    <string name="go_to_home">Go to Home</string>
+    <string name="go_to_java">Go to Java</string>
+    <string name="go_to_kotlin">Keep on Kotlin</string>
+</resources>

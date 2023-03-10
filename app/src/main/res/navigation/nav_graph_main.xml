@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/fragment_kotlin">
+
+    <fragment
+        android:id="@+id/fragment_kotlin"
+        android:name="com.cst.androidlab.fragments.FragmentKotlin"
+        tools:layout="@layout/fragment_kotlin">
+        <action
+            android:id="@+id/action_fragment_kotlin_to_fragment_kotlin_second"
+            app:destination="@id/fragment_kotlin_second" />
+        <action
+            android:id="@+id/action_fragment_kotlin_to_fragment_java"
+            app:destination="@id/fragment_java" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_java"
+        android:name="com.cst.androidlab.fragments.FragmentJava"
+        tools:layout="@layout/fragment_java">
+        <action
+            android:id="@+id/action_fragment_java_to_fragment_kotlin_second"
+            app:destination="@id/fragment_kotlin_second" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_kotlin_second"
+        android:name="com.cst.androidlab.fragments.FragmentKotlinSecond"
+        tools:layout="@layout/fragment_kotlin_second"/>
+
+</navigation>
