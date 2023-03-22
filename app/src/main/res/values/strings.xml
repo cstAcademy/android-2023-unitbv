@@ -4,5 +4,7 @@
     <string name="press_me">Press me!</string>
     <string name="go_to_home">Go to Home</string>
     <string name="go_to_java">Go to Java</string>
+    <string name="show_entertainment_list">Show entertainment list</string>
+    <string name="go_to_recycler_view">Go to Recycler View</string>
     <string name="go_to_kotlin">Keep on Kotlin</string>
 </resources>
