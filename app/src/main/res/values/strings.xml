@@ -5,6 +5,17 @@
     <string name="go_to_home">Go to Home</string>
     <string name="go_to_java">Go to Java</string>
     <string name="show_entertainment_list">Show entertainment list</string>
+    <string name="show_todos_list">Show todos list</string>
     <string name="go_to_recycler_view">Go to Recycler View</string>
     <string name="go_to_kotlin">Keep on Kotlin</string>
+
+    <string name="hint_title">Add your title here…</string>
+    <string name="hint_description">Description</string>
+
+    <string name="error_required">Required field!</string>
+
+    <string name="add">Add</string>
+    <string name="get">Get</string>
+    <string name="get_all">Get All</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -1,11 +1,10 @@
-package com.cst.androidlab;
+package com.cst.androidlab.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +13,9 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.cst.androidlab.R;
 import com.cst.androidlab.fragments.FragmentJavaDirections;
 import com.cst.androidlab.fragments.FragmentKotlinDirections;
-import com.cst.androidlab.fragments.FragmentKotlinSecond;
 
 public class MainActivityJava extends AppCompatActivity {
 

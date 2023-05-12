@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <ImageView
         android:id="@+id/imv_logo"
@@ -23,10 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_entertainment_list"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_go_to_todos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imv_logo" />
+
+    <Button
+        android:id="@+id/btn_go_to_todos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_todos_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_press_me" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host"
