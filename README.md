@@ -8,8 +8,11 @@ Asadar, avem urmatoarea navigare si componente:
 2. **FragmentKotlin** - destinatia initiala a MainActivityJava. Gasim aici un buton care ne ajuta sa navigam catre **FragmentJava**.
 3. **FragmentJava** - un fragment care nu are nici o actiune proprie, ci o poate folosi numai pe cea oferita de activitatea in **context**-ul careia traieste.
 4. **FragmentKoltinSecond** - un fragment care nu are nici o actiune proprie, ci o poate folosi numai pe cea oferita de activitatea in **context**-ul careia traieste.
-5. **HomeActivity** - o activitate finala. Contine un buton care afiseaza o lista de filme si seriale intr-un RecyclerView.
+5. **HomeActivity** - o activitate de tranzitie. Contine:
+* un buton care afiseaza o lista de filme si seriale intr-un RecyclerView.
+* un buton care ne trimite catre activitatea **LocalDataBaseActivity**.
 6. **MainActivity** - o activitate neutilizata. 
+7. **LocalDataBaseActivity** - o activitate care utilizeaza integrarea cu Room pentru a salva date intr-o baza de date locala.
 
 ## FragmentKotlin
 ![Screenshot_1678445690](https://user-images.githubusercontent.com/94128900/224305248-0b5c2a5b-486c-4df8-90fc-7e57a48d7a68.png)
@@ -25,3 +28,6 @@ Asadar, avem urmatoarea navigare si componente:
 
 ## HomeActivity with RecyclerView
 ![Screenshot_1679478922](https://user-images.githubusercontent.com/67600264/226868687-2907c99a-cbc8-4139-837f-627f161751e5.png)
+
+## LocalDataBaseActivity
+![Screenshot_1683897555](https://github.com/cstAcademy/android-2023-unitbv/assets/67600264/482e8a85-dea2-4140-844f-1bb3c1930ca9)
