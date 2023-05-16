@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,53 +27,76 @@ import java.util.List;
 
 public class FragmentRecyclerView extends Fragment {
 
-   @Nullable
-   @Override
-   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
-      return view;
-   }
+        return view;
+    }
 
-   @Override
-   public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-      super.onViewCreated(view, savedInstanceState);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-      RecyclerView recyclerView = view.findViewById(R.id.rv_movies);
+        setupRecyclerView(view);
 
-      List<Entertainment> movies = new ArrayList<>();
-      movies.add(new MovieKotlinModel("Star Wars"));
-      movies.add(new MovieKotlinModel("Avatar"));
-      movies.add(new MovieKotlinModel("Avengers"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new TvShow("Game of Thrones", "Other desc"));
-      movies.add(new TvShow("The last of us", "Description"));
-      movies.add(new MovieKotlinModel("Star Wars"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new MovieKotlinModel("Avatar"));
-      movies.add(new MovieKotlinModel("Avengers"));
-      movies.add(new MovieKotlinModel("Avengers"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new TvShow("Game of Thrones", "Other desc"));
-      movies.add(new TvShow("The last of us", "Description"));
-      movies.add(new MovieKotlinModel("Star Wars"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new MovieKotlinModel("Avatar"));
-      movies.add(new MovieKotlinModel("Avengers"));
-      movies.add(new MovieKotlinModel("Avengers"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new TvShow("Game of Thrones", "Other desc"));
-      movies.add(new TvShow("The last of us", "Description"));
-      movies.add(new MovieKotlinModel("Star Wars"));
-      movies.add(new TvShow("Big Bang Theory", "Some Description"));
-      movies.add(new MovieKotlinModel("Avatar"));
-      movies.add(new MovieKotlinModel("Avengers"));
+        view.findViewById(R.id.fab).setOnClickListener(v -> {
+            goToNetworkFragment();
+        });
+    }
 
-      MovieItemsAdapter adapter = new MovieItemsAdapter(movies);
+    private void setupRecyclerView(@NonNull View view) {
+        RecyclerView recyclerView = view.findViewById(R.id.rv_movies);
 
-      recyclerView.setAdapter(adapter);
+        List<Entertainment> movies = new ArrayList<>();
+        movies.add(new MovieKotlinModel("Star Wars"));
+        movies.add(new MovieKotlinModel("Avatar"));
+        movies.add(new MovieKotlinModel("Avengers"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new TvShow("Game of Thrones", "Other desc"));
+        movies.add(new TvShow("The last of us", "Description"));
+        movies.add(new MovieKotlinModel("Star Wars"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new MovieKotlinModel("Avatar"));
+        movies.add(new MovieKotlinModel("Avengers"));
+        movies.add(new MovieKotlinModel("Avengers"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new TvShow("Game of Thrones", "Other desc"));
+        movies.add(new TvShow("The last of us", "Description"));
+        movies.add(new MovieKotlinModel("Star Wars"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new MovieKotlinModel("Avatar"));
+        movies.add(new MovieKotlinModel("Avengers"));
+        movies.add(new MovieKotlinModel("Avengers"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new TvShow("Game of Thrones", "Other desc"));
+        movies.add(new TvShow("The last of us", "Description"));
+        movies.add(new MovieKotlinModel("Star Wars"));
+        movies.add(new TvShow("Big Bang Theory", "Some Description"));
+        movies.add(new MovieKotlinModel("Avatar"));
+        movies.add(new MovieKotlinModel("Avengers"));
 
-      LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-      recyclerView.setLayoutManager(layoutManager);
-   }
+        MovieItemsAdapter adapter = new MovieItemsAdapter(movies);
+
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
+    private void goToNetworkFragment() {
+        NavDirections action = FragmentRecyclerViewDirections.actionFragmentRecyclerViewToFragmentNetworkData();
+
+        FragmentActivity activity = getActivity();
+        if (activity == null) return;
+
+        NavHostFragment navHostFragment =
+                (NavHostFragment) activity.getSupportFragmentManager().findFragmentById(R.id.nav_host);
+
+        if (navHostFragment != null) {
+            NavController navController = navHostFragment.getNavController();
+            navController.navigate(action);
+        }
+    }
 }

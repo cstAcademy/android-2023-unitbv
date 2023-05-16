@@ -18,4 +18,13 @@
         tools:listitem="@layout/item_movie"
         tools:itemCount="20"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/globe"
+        android:layout_margin="@dimen/default_space" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

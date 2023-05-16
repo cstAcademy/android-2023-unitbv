@@ -9,6 +9,8 @@
     <string name="go_to_recycler_view">Go to Recycler View</string>
     <string name="go_to_kotlin">Keep on Kotlin</string>
 
+    <string name="swipe_to_load_data">Swipe from top to bottom in order to load data.</string>
+
     <string name="hint_title">Add your title here…</string>
     <string name="hint_description">Description</string>
 
