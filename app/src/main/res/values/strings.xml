@@ -3,7 +3,9 @@
     <string name="hello_world">Hello World!</string>
     <string name="press_me">Press me!</string>
     <string name="login">Login</string>
-    <string name="register">Register</string>
+    <string name="register">Go To Register</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
 </resources>
