@@ -9,12 +9,15 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.cst.cstacademy2024.BuildConfig
+
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.cst.cstacademy2024.helpers.extensions.logErrorMessage
 import com.cst.cstacademy2024.models.LoginModel
+import org.json.JSONObject
 
 class LoginFragment : Fragment() {
 
@@ -44,21 +47,39 @@ class LoginFragment : Fragment() {
     private fun doLogin() {
         val username = view?.findViewById<EditText>(R.id.et_user_name)?.text?.toString() ?: ""
         val password = view?.findViewById<EditText>(R.id.et_password)?.text?.toString() ?: ""
-        val loginModel = LoginModel(username, password)
+        val loginModel = when (BuildConfig.DEBUG) {
+            true -> LoginModel("mor_2314", "83r5^_")
+            false -> LoginModel(username, password)
+        }
         // Call the login method from the view model
 
         val queue = Volley.newRequestQueue(context ?: return)
-        val url = "https://fakestoreapi.com/products"
+        val url = "https://fakestoreapi.com/auth/login"
 
-        val stringRequest = StringRequest(
-            Request.Method.GET,
+        val stringRequest = object: StringRequest(
+            Request.Method.POST,
             url,
             Response.Listener<String> { response ->
                 "Success".logErrorMessage()
+                val jsonResponse = JSONObject(response)
+                try {
+                    val token = jsonResponse.getString("token")
+                    "Token: $token".logErrorMessage()
+                } catch (e: Exception) {
+                    e.message?.logErrorMessage()
+                }
             },
             Response.ErrorListener {
                 "Error".logErrorMessage()
-            })
+            }) {
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params["username"] = loginModel.username
+                params["password"] = loginModel.password
+                return params
+            }
+
+        }
 
         queue.add(stringRequest)
     }
