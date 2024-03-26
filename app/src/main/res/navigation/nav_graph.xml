@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_fragment_login_to_fragment_register"
             app:destination="@id/fragment_register" />
+        <action
+            android:id="@+id/action_fragment_login_to_productListFragment"
+            app:destination="@id/productListFragment" />
     </fragment>
 
     <fragment
@@ -20,4 +23,17 @@
         android:name="com.cst.cstacademy2024.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register"/>
+
+    <fragment
+        android:id="@+id/productListFragment"
+        android:name="com.cst.cstacademy2024.ProductListFragment"
+        android:label="ProductListFragment"
+        tools:layout="@layout/fragment_product_list">
+
+        <argument
+            android:name="token"
+            app:argType="string" />
+    </fragment>
+
+
 </navigation>
