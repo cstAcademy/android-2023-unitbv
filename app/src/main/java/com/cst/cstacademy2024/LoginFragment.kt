@@ -44,6 +44,10 @@ class LoginFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    private fun goToProductList(token: String) {
+        val action = LoginFragmentDirections.actionFragmentLoginToProductListFragment(token)
+        findNavController().navigate(action)
+    }
     private fun doLogin() {
         val username = view?.findViewById<EditText>(R.id.et_user_name)?.text?.toString() ?: ""
         val password = view?.findViewById<EditText>(R.id.et_password)?.text?.toString() ?: ""
@@ -65,6 +69,7 @@ class LoginFragment : Fragment() {
                 try {
                     val token = jsonResponse.getString("token")
                     "Token: $token".logErrorMessage()
+                    goToProductList(token)
                 } catch (e: Exception) {
                     e.message?.logErrorMessage()
                 }
