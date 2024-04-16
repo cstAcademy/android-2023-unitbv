@@ -23,7 +23,7 @@
         android:name="com.cst.cstacademy2024.RegisterFragment"
         android:label="Register"
         tools:layout="@layout/fragment_register"/>
-
+		
     <fragment
         android:id="@+id/productListFragment"
         android:name="com.cst.cstacademy2024.ProductListFragment"
@@ -34,6 +34,5 @@
             android:name="token"
             app:argType="string" />
     </fragment>
-
 
 </navigation>

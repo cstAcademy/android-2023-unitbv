@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
         val action = LoginFragmentDirections.actionFragmentLoginToProductListFragment(token)
         findNavController().navigate(action)
     }
+	
     private fun doLogin() {
         val username = view?.findViewById<EditText>(R.id.et_user_name)?.text?.toString() ?: ""
         val password = view?.findViewById<EditText>(R.id.et_password)?.text?.toString() ?: ""
