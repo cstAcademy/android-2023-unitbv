@@ -15,6 +15,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.cst.cstacademy2024.data.repositories.ProductRepository
 import com.cst.cstacademy2024.helpers.extensions.VolleyRequestQueue
 import com.cst.cstacademy2024.helpers.extensions.logErrorMessage
 import com.cst.cstacademy2024.models.LoginModel
@@ -51,6 +52,14 @@ class LoginFragment : Fragment() {
     }
 	
     private fun doLogin() {
+
+        ProductRepository.getCategoriesWithProducts {
+            "Success".logErrorMessage()
+        }
+        return
+
+
+
         val username = view?.findViewById<EditText>(R.id.et_user_name)?.text?.toString() ?: ""
         val password = view?.findViewById<EditText>(R.id.et_password)?.text?.toString() ?: ""
         val loginModel = when (BuildConfig.DEBUG) {
