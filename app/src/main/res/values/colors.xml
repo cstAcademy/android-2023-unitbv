@@ -6,4 +6,12 @@
     <color name="yellow">#FFEB3B</color>
     <color name="red">#F44336</color>
     <color name="blue">#0B5087</color>
+
+    <color name="shark">#1A1A1C</color>
+    <color name="shark_second">#272729</color>
+    <color name="school_bus_yellow">#FFDA00</color>
+    <color name="jumbo">#838388</color>
+    <color name="french_gray">#C0C0C5</color>
+    <color name="scarpa_flow">#58585B</color>
+    <color name="ship_gray">#3F3F41</color>
 </resources>

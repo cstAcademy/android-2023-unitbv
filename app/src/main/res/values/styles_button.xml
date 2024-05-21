@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppButtonView" parent="AppTextView">
+
+    </style>
+    
+    <style name="ActionButton" parent="AppButtonView">
+        <item name="android:background">@drawable/selector_action_button</item>
+        <item name="android:textSize">@dimen/material_text_subhead</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ActionButton.AuthenticationLogIn">
+        <item name="android:text">@string/action_login</item>
+    </style>
+    
+</resources>

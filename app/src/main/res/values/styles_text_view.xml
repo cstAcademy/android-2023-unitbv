@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTextView">
+
+    </style>
+
+    <style name="FormSectionTextView" parent="AppTextView">
+        <item name="color">@color/french_gray</item>
+        <item name="android:textSize">@dimen/material_text_body1</item>
+    </style>
+
+    <style name="FormSectionTextView.AuthenticationUsername" parent="AppTextView">
+        <item name="android:text">@string/user_name</item>
+    </style>
+
+    <style name="FormSectionTextView.AuthenticationPassword" parent="AppTextView">
+        <item name="android:text">@string/password</item>
+    </style>
+
+</resources>
