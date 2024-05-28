@@ -11,17 +11,17 @@ import com.cst.cstacademy2024.models.ProductAPIResponse
 @Dao
 interface ProductsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insert(product: ProductAPIResponse)
+    fun insert(product: ProductAPIResponse)
 
-    @Insert
-     fun insertAll(products: List<ProductAPIResponse>)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(products: List<ProductAPIResponse>)
 
     @Query("SELECT * FROM products")
-     fun getAll(): List<ProductAPIResponse>
+    fun getAll(): List<ProductAPIResponse>
 
-     @Query("SELECT * FROM categories")
+    @Query("SELECT * FROM categories")
     fun getCategoriesWithProducts(): List<CategoryWithProducts>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCategory(category: CategoryDBModel)
 }

@@ -15,6 +15,8 @@ import com.cst.cstacademy2024.adapters.ProductListAdapter
 import com.cst.cstacademy2024.data.repositories.ProductRepository
 import com.cst.cstacademy2024.helpers.extensions.VolleyRequestQueue
 import com.cst.cstacademy2024.helpers.extensions.logErrorMessage
+import com.cst.cstacademy2024.helpers.extensions.showToast
+import com.cst.cstacademy2024.managers.SharedPrefsManager
 import com.cst.cstacademy2024.models.CartItemModel
 import com.cst.cstacademy2024.models.CategoryModel
 import com.cst.cstacademy2024.models.ProductAPIResponse
@@ -36,12 +38,16 @@ class ProductListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val token = arguments.token
         // Use the token to call the API
         //log the token
-        token.logErrorMessage()
+        arguments.token.logErrorMessage()
+
         setupProductList()
         getCartItems()
+
+        SharedPrefsManager.readToken()?.let { token ->
+            context?.showToast(token)
+        }
     }
 
     private fun setupProductList() {

@@ -2,13 +2,13 @@ package com.cst.cstacademy2024.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "products")
 class ProductAPIResponse(
     @PrimaryKey
-
     val id: Int,
     @SerializedName("title") val name: String,
     val description: String,

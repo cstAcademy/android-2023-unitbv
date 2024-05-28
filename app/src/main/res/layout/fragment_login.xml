@@ -13,6 +13,8 @@
             name="listener"
             type="com.cst.cstacademy2024.ui.login.LoginFragmentListener" />
 
+        <import type="android.view.View"/>
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,6 +65,17 @@
 
             <Space
                 android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <TextView
+                style="@style/FormErrorTextView.AuthenticationUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isUsernameError ? View.GONE : View.VISIBLE, default=gone}"
+                tools:visibility="visible"/>
+
+            <Space
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/default_padding" />
 
             <TextView
@@ -77,9 +90,21 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_password"
                 style="@style/FormEditText.AuthenticationPassword"
+                android:text="@={viewModel.password}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintVertical_chainStyle="packed" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <TextView
+                style="@style/FormErrorTextView.AuthenticationPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isPasswordError ? View.GONE : View.VISIBLE, default=gone}"
+                tools:visibility="visible"/>
 
         </LinearLayout>
 
@@ -88,7 +113,7 @@
             style="@style/ActionButton.AuthenticationLogIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> listener.doLogin(viewModel.getLoginFormData(viewModel.username, viewModel.password))}"
+            android:onClick="@{() -> viewModel.setLoginFormData(viewModel.username, viewModel.password)}"
             app:layout_constraintBottom_toTopOf="@id/btn_register"
             app:layout_constraintEnd_toEndOf="@id/lly_form"
             app:layout_constraintStart_toStartOf="@id/lly_form" />

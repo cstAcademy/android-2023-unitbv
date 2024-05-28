@@ -18,6 +18,7 @@ import com.cst.cstacademy2024.R
 import com.cst.cstacademy2024.databinding.FragmentLoginBinding
 import com.cst.cstacademy2024.helpers.extensions.VolleyRequestQueue
 import com.cst.cstacademy2024.helpers.extensions.logErrorMessage
+import com.cst.cstacademy2024.managers.SharedPrefsManager
 import com.cst.cstacademy2024.models.LoginModel
 import org.json.JSONObject
 
@@ -36,6 +37,7 @@ class LoginFragment : Fragment(), LoginFragmentListener {
 
         binding.listener = this
         binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         return binding.root
     }
@@ -44,7 +46,16 @@ class LoginFragment : Fragment(), LoginFragmentListener {
         super.onViewCreated(view, savedInstanceState)
 
         if(BuildConfig.DEBUG) {
-            viewModel.username.set("mor_2314")
+            viewModel.username.value = "mor_2314"
+            viewModel.password.value = "83r5^_"
+        }
+
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewModel.loginModel.observe(viewLifecycleOwner) { loginModel ->
+            doLogin(model = loginModel)
         }
     }
 
@@ -53,14 +64,7 @@ class LoginFragment : Fragment(), LoginFragmentListener {
         findNavController().navigate(action)
     }
 	
-    override fun doLogin(model: LoginModel) {
-//        val username = view?.findViewById<EditText>(R.id.et_user_name)?.text?.toString() ?: ""
-//        val password = view?.findViewById<EditText>(R.id.et_password)?.text?.toString() ?: ""
-//        val loginModel = when (BuildConfig.DEBUG) {
-//            true -> LoginModel("mor_2314", "83r5^_")
-//            false -> LoginModel(username, password)
-//        }
-
+    private fun doLogin(model: LoginModel) {
         val url = "https://fakestoreapi.com/auth/login"
 
         val stringRequest = object: StringRequest(
@@ -72,6 +76,9 @@ class LoginFragment : Fragment(), LoginFragmentListener {
                 try {
                     val token = jsonResponse.getString("token")
                     "Token: $token".logErrorMessage()
+
+                    SharedPrefsManager.writeToken(token)
+
                     goToProductList(token)
                 } catch (e: Exception) {
                     e.message?.logErrorMessage()
@@ -99,6 +106,5 @@ class LoginFragment : Fragment(), LoginFragmentListener {
 }
 
 interface LoginFragmentListener {
-    fun doLogin(model: LoginModel)
     fun goToRegister()
 }
