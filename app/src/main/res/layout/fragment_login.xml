@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cst.cstacademy2024.ui.login.LoginViewModel" />
+
+        <variable
+            name="listener"
+            type="com.cst.cstacademy2024.ui.login.LoginFragmentListener" />
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/shark">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/default_padding"
+            app:layout_constraintBottom_toTopOf="@id/lly_form"
+            app:layout_constraintDimensionRatio="W, 254:304"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:url="@{viewModel.logoImage}"
+            tools:src="@drawable/logo" />
+
+        <LinearLayout
+            android:id="@+id/lly_form"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/btn_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8">
+
+            <TextView
+                style="@style/FormSectionTextView.AuthenticationUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_user_name"
+                style="@style/FormEditText.AuthenticationUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.username}"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <TextView
+                style="@style/FormErrorTextView.AuthenticationUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isUsernameError ? View.GONE : View.VISIBLE, default=gone}"
+                tools:visibility="visible"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding" />
+
+            <TextView
+                style="@style/FormSectionTextView.AuthenticationPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_password"
+                style="@style/FormEditText.AuthenticationPassword"
+                android:text="@={viewModel.password}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/default_padding_half" />
+
+            <TextView
+                style="@style/FormErrorTextView.AuthenticationPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{viewModel.isPasswordError ? View.GONE : View.VISIBLE, default=gone}"
+                tools:visibility="visible"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_id"
+            style="@style/ActionButton.AuthenticationLogIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.setLoginFormData(viewModel.username, viewModel.password)}"
+            app:layout_constraintBottom_toTopOf="@id/btn_register"
+            app:layout_constraintEnd_toEndOf="@id/lly_form"
+            app:layout_constraintStart_toStartOf="@id/lly_form" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:onClick="@{() -> listener.goToRegister()}"
+            android:text="@string/register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

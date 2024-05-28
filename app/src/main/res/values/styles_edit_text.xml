@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppEditTextView" parent="AppTextView">
+
+    </style>
+
+    <style name="FormEditText" parent="AppEditTextView">
+        <item name="android:background">@drawable/shape_edit_text_background</item>
+        <item name="android:textColorHint">@color/jumbo</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">@dimen/default_padding</item>
+    </style>
+
+    <style name="FormEditText.AuthenticationUserName">
+        <item name="android:hint">@string/hint_user_name</item>
+        <item name="android:drawableStart">@drawable/account_circle</item>
+        <item name="android:drawablePadding">@dimen/default_padding_half</item>
+    </style>
+
+    <style name="FormEditText.AuthenticationPassword">
+        <item name="android:hint">@string/hint_password</item>
+        <item name="android:drawableStart">@drawable/key</item>
+        <item name="android:drawablePadding">@dimen/default_padding_half</item>
+    </style>
+
+</resources>
